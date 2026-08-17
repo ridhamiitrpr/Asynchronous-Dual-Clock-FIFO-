@@ -1,0 +1,535 @@
+TEST 1 : RESET
+PASS
+
+TEST 2 : BASIC OPERATION
+[WRITE] ACCEPTED data=11
+       Queue = [11]
+[WRITE] ACCEPTED data=22
+       Queue = [11 22]
+[WRITE] ACCEPTED data=33
+       Queue = [11 22 33]
+[WRITE] ACCEPTED data=44
+       Queue = [11 22 33 44]
+[READ ] expected=11 actual=11
+       Queue = [22 33 44]
+[READ ] expected=22 actual=22
+       Queue = [33 44]
+[READ ] expected=33 actual=33
+       Queue = [44]
+[READ ] expected=44 actual=44
+       Queue = [EMPTY]
+PASS
+
+TEST 3 : FULL + OVERFLOW
+[WRITE] ACCEPTED data=00
+       Queue = [00]
+[WRITE] ACCEPTED data=01
+       Queue = [00 01]
+[WRITE] ACCEPTED data=02
+       Queue = [00 01 02]
+[WRITE] ACCEPTED data=03
+       Queue = [00 01 02 03]
+[WRITE] ACCEPTED data=04
+       Queue = [00 01 02 03 04]
+[WRITE] ACCEPTED data=05
+       Queue = [00 01 02 03 04 05]
+[WRITE] ACCEPTED data=06
+       Queue = [00 01 02 03 04 05 06]
+[WRITE] ACCEPTED data=07
+       Queue = [00 01 02 03 04 05 06 07]
+[WRITE] ACCEPTED data=08
+       Queue = [00 01 02 03 04 05 06 07 08]
+[WRITE] ACCEPTED data=09
+       Queue = [00 01 02 03 04 05 06 07 08 09]
+[WRITE] ACCEPTED data=0a
+       Queue = [00 01 02 03 04 05 06 07 08 09 0a]
+[WRITE] ACCEPTED data=0b
+       Queue = [00 01 02 03 04 05 06 07 08 09 0a 0b]
+[WRITE] ACCEPTED data=0c
+       Queue = [00 01 02 03 04 05 06 07 08 09 0a 0b 0c]
+[WRITE] ACCEPTED data=0d
+       Queue = [00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d]
+[WRITE] ACCEPTED data=0e
+       Queue = [00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e]
+[WRITE] ACCEPTED data=0f
+       Queue = [00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f]
+[WRITE] REJECTED (FULL) data=aa
+[WRITE] REJECTED (FULL) data=bb
+[WRITE] REJECTED (FULL) data=cc
+PASS
+
+TEST 4 : EMPTY + UNDERFLOW
+[WRITE] ACCEPTED data=80
+       Queue = [80]
+[WRITE] ACCEPTED data=81
+       Queue = [80 81]
+[WRITE] ACCEPTED data=82
+       Queue = [80 81 82]
+[WRITE] ACCEPTED data=83
+       Queue = [80 81 82 83]
+[WRITE] ACCEPTED data=84
+       Queue = [80 81 82 83 84]
+[WRITE] ACCEPTED data=85
+       Queue = [80 81 82 83 84 85]
+[WRITE] ACCEPTED data=86
+       Queue = [80 81 82 83 84 85 86]
+[WRITE] ACCEPTED data=87
+       Queue = [80 81 82 83 84 85 86 87]
+[WRITE] ACCEPTED data=88
+       Queue = [80 81 82 83 84 85 86 87 88]
+[WRITE] ACCEPTED data=89
+       Queue = [80 81 82 83 84 85 86 87 88 89]
+[WRITE] ACCEPTED data=8a
+       Queue = [80 81 82 83 84 85 86 87 88 89 8a]
+[WRITE] ACCEPTED data=8b
+       Queue = [80 81 82 83 84 85 86 87 88 89 8a 8b]
+[WRITE] ACCEPTED data=8c
+       Queue = [80 81 82 83 84 85 86 87 88 89 8a 8b 8c]
+[WRITE] ACCEPTED data=8d
+       Queue = [80 81 82 83 84 85 86 87 88 89 8a 8b 8c 8d]
+[WRITE] ACCEPTED data=8e
+       Queue = [80 81 82 83 84 85 86 87 88 89 8a 8b 8c 8d 8e]
+[WRITE] ACCEPTED data=8f
+       Queue = [80 81 82 83 84 85 86 87 88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=80 actual=80
+       Queue = [81 82 83 84 85 86 87 88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=81 actual=81
+       Queue = [82 83 84 85 86 87 88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=82 actual=82
+       Queue = [83 84 85 86 87 88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=83 actual=83
+       Queue = [84 85 86 87 88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=84 actual=84
+       Queue = [85 86 87 88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=85 actual=85
+       Queue = [86 87 88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=86 actual=86
+       Queue = [87 88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=87 actual=87
+       Queue = [88 89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=88 actual=88
+       Queue = [89 8a 8b 8c 8d 8e 8f]
+[READ ] expected=89 actual=89
+       Queue = [8a 8b 8c 8d 8e 8f]
+[READ ] expected=8a actual=8a
+       Queue = [8b 8c 8d 8e 8f]
+[READ ] expected=8b actual=8b
+       Queue = [8c 8d 8e 8f]
+[READ ] expected=8c actual=8c
+       Queue = [8d 8e 8f]
+[READ ] expected=8d actual=8d
+       Queue = [8e 8f]
+[READ ] expected=8e actual=8e
+       Queue = [8f]
+[READ ] expected=8f actual=8f
+       Queue = [EMPTY]
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+PASS
+
+TEST 5 : WRITE FASTER THAN READ
+[WRITE] ACCEPTED data=40
+       Queue = [40]
+[WRITE] ACCEPTED data=41
+       Queue = [40 41]
+[WRITE] ACCEPTED data=42
+       Queue = [40 41 42]
+[WRITE] ACCEPTED data=43
+       Queue = [40 41 42 43]
+[READ ] expected=40 actual=40
+       Queue = [41 42 43]
+[WRITE] ACCEPTED data=44
+       Queue = [41 42 43 44]
+[WRITE] ACCEPTED data=45
+       Queue = [41 42 43 44 45]
+[WRITE] ACCEPTED data=46
+       Queue = [41 42 43 44 45 46]
+[READ ] expected=41 actual=41
+       Queue = [42 43 44 45 46]
+[WRITE] ACCEPTED data=47
+       Queue = [42 43 44 45 46 47]
+[WRITE] ACCEPTED data=48
+       Queue = [42 43 44 45 46 47 48]
+[READ ] expected=42 actual=42
+       Queue = [43 44 45 46 47 48]
+[WRITE] ACCEPTED data=49
+       Queue = [43 44 45 46 47 48 49]
+[WRITE] ACCEPTED data=4a
+       Queue = [43 44 45 46 47 48 49 4a]
+[WRITE] ACCEPTED data=4b
+       Queue = [43 44 45 46 47 48 49 4a 4b]
+[READ ] expected=43 actual=43
+       Queue = [44 45 46 47 48 49 4a 4b]
+[WRITE] ACCEPTED data=4c
+       Queue = [44 45 46 47 48 49 4a 4b 4c]
+[WRITE] ACCEPTED data=4d
+       Queue = [44 45 46 47 48 49 4a 4b 4c 4d]
+[READ ] expected=44 actual=44
+       Queue = [45 46 47 48 49 4a 4b 4c 4d]
+[WRITE] ACCEPTED data=4e
+       Queue = [45 46 47 48 49 4a 4b 4c 4d 4e]
+[WRITE] ACCEPTED data=4f
+       Queue = [45 46 47 48 49 4a 4b 4c 4d 4e 4f]
+[WRITE] ACCEPTED data=50
+       Queue = [45 46 47 48 49 4a 4b 4c 4d 4e 4f 50]
+[READ ] expected=45 actual=45
+       Queue = [46 47 48 49 4a 4b 4c 4d 4e 4f 50]
+[WRITE] ACCEPTED data=51
+       Queue = [46 47 48 49 4a 4b 4c 4d 4e 4f 50 51]
+[WRITE] ACCEPTED data=52
+       Queue = [46 47 48 49 4a 4b 4c 4d 4e 4f 50 51 52]
+[READ ] expected=46 actual=46
+       Queue = [47 48 49 4a 4b 4c 4d 4e 4f 50 51 52]
+[WRITE] ACCEPTED data=53
+       Queue = [47 48 49 4a 4b 4c 4d 4e 4f 50 51 52 53]
+[WRITE] ACCEPTED data=54
+       Queue = [47 48 49 4a 4b 4c 4d 4e 4f 50 51 52 53 54]
+[WRITE] ACCEPTED data=55
+       Queue = [47 48 49 4a 4b 4c 4d 4e 4f 50 51 52 53 54 55]
+[READ ] expected=47 actual=47
+       Queue = [48 49 4a 4b 4c 4d 4e 4f 50 51 52 53 54 55]
+[WRITE] ACCEPTED data=56
+       Queue = [48 49 4a 4b 4c 4d 4e 4f 50 51 52 53 54 55 56]
+[WRITE] ACCEPTED data=57
+       Queue = [48 49 4a 4b 4c 4d 4e 4f 50 51 52 53 54 55 56 57]
+[READ ] expected=48 actual=48
+       Queue = [49 4a 4b 4c 4d 4e 4f 50 51 52 53 54 55 56 57]
+[WRITE] REJECTED (FULL) data=58
+[WRITE] REJECTED (FULL) data=59
+[WRITE] ACCEPTED data=5a
+       Queue = [49 4a 4b 4c 4d 4e 4f 50 51 52 53 54 55 56 57 5a]
+[READ ] expected=49 actual=49
+       Queue = [4a 4b 4c 4d 4e 4f 50 51 52 53 54 55 56 57 5a]
+[WRITE] REJECTED (FULL) data=5b
+[WRITE] ACCEPTED data=5c
+       Queue = [4a 4b 4c 4d 4e 4f 50 51 52 53 54 55 56 57 5a 5c]
+[READ ] expected=4a actual=4a
+       Queue = [4b 4c 4d 4e 4f 50 51 52 53 54 55 56 57 5a 5c]
+[WRITE] REJECTED (FULL) data=5d
+[WRITE] REJECTED (FULL) data=5e
+[WRITE] ACCEPTED data=5f
+       Queue = [4b 4c 4d 4e 4f 50 51 52 53 54 55 56 57 5a 5c 5f]
+[READ ] expected=4b actual=4b
+       Queue = [4c 4d 4e 4f 50 51 52 53 54 55 56 57 5a 5c 5f]
+[WRITE] REJECTED (FULL) data=60
+[WRITE] REJECTED (FULL) data=61
+[WRITE] ACCEPTED data=62
+       Queue = [4c 4d 4e 4f 50 51 52 53 54 55 56 57 5a 5c 5f 62]
+[READ ] expected=4c actual=4c
+       Queue = [4d 4e 4f 50 51 52 53 54 55 56 57 5a 5c 5f 62]
+[READ ] expected=4d actual=4d
+       Queue = [4e 4f 50 51 52 53 54 55 56 57 5a 5c 5f 62]
+[READ ] expected=4e actual=4e
+       Queue = [4f 50 51 52 53 54 55 56 57 5a 5c 5f 62]
+[READ ] expected=4f actual=4f
+       Queue = [50 51 52 53 54 55 56 57 5a 5c 5f 62]
+[READ ] expected=50 actual=50
+       Queue = [51 52 53 54 55 56 57 5a 5c 5f 62]
+[READ ] expected=51 actual=51
+       Queue = [52 53 54 55 56 57 5a 5c 5f 62]
+[READ ] expected=52 actual=52
+       Queue = [53 54 55 56 57 5a 5c 5f 62]
+[READ ] expected=53 actual=53
+       Queue = [54 55 56 57 5a 5c 5f 62]
+[READ ] expected=54 actual=54
+       Queue = [55 56 57 5a 5c 5f 62]
+[READ ] expected=55 actual=55
+       Queue = [56 57 5a 5c 5f 62]
+[READ ] expected=56 actual=56
+       Queue = [57 5a 5c 5f 62]
+[READ ] expected=57 actual=57
+       Queue = [5a 5c 5f 62]
+[READ ] expected=5a actual=5a
+       Queue = [5c 5f 62]
+[READ ] expected=5c actual=5c
+       Queue = [5f 62]
+[READ ] expected=5f actual=5f
+       Queue = [62]
+[READ ] expected=62 actual=62
+       Queue = [EMPTY]
+PASS
+
+TEST 6 : READ FASTER THAN WRITE
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=80
+       Queue = [80]
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=81
+       Queue = [80 81]
+[READ ] expected=80 actual=80
+       Queue = [81]
+[WRITE] ACCEPTED data=82
+       Queue = [81 82]
+[READ ] expected=81 actual=81
+       Queue = [82]
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=83
+       Queue = [82 83]
+[READ ] expected=82 actual=82
+       Queue = [83]
+[WRITE] ACCEPTED data=84
+       Queue = [83 84]
+[READ ] expected=83 actual=83
+       Queue = [84]
+[WRITE] ACCEPTED data=85
+       Queue = [84 85]
+[READ ] REJECTED (EMPTY)
+[READ ] expected=84 actual=84
+       Queue = [85]
+[WRITE] ACCEPTED data=86
+       Queue = [85 86]
+[READ ] expected=85 actual=85
+       Queue = [86]
+[WRITE] ACCEPTED data=87
+       Queue = [86 87]
+[READ ] expected=86 actual=86
+       Queue = [87]
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=88
+       Queue = [87 88]
+[READ ] expected=87 actual=87
+       Queue = [88]
+[WRITE] ACCEPTED data=89
+       Queue = [88 89]
+[READ ] expected=88 actual=88
+       Queue = [89]
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=8a
+       Queue = [89 8a]
+[READ ] expected=89 actual=89
+       Queue = [8a]
+[WRITE] ACCEPTED data=8b
+       Queue = [8a 8b]
+[READ ] expected=8a actual=8a
+       Queue = [8b]
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=8c
+       Queue = [8b 8c]
+[READ ] expected=8b actual=8b
+       Queue = [8c]
+[WRITE] ACCEPTED data=8d
+       Queue = [8c 8d]
+[READ ] expected=8c actual=8c
+       Queue = [8d]
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=8e
+       Queue = [8d 8e]
+[READ ] expected=8d actual=8d
+       Queue = [8e]
+[READ ] expected=8e actual=8e
+       Queue = [EMPTY]
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+[READ ] REJECTED (EMPTY)
+PASS
+
+TEST 7 : SIMULTANEOUS READ/WRITE
+[WRITE] ACCEPTED data=10
+       Queue = [10]
+[WRITE] ACCEPTED data=11
+       Queue = [10 11]
+[WRITE] ACCEPTED data=12
+       Queue = [10 11 12]
+[WRITE] ACCEPTED data=13
+       Queue = [10 11 12 13]
+[WRITE] ACCEPTED data=14
+       Queue = [10 11 12 13 14]
+[READ ] expected=10 actual=10
+       Queue = [11 12 13 14]
+[WRITE] ACCEPTED data=20
+       Queue = [11 12 13 14 20]
+[WRITE] ACCEPTED data=21
+       Queue = [11 12 13 14 20 21]
+[READ ] expected=11 actual=11
+       Queue = [12 13 14 20 21]
+[WRITE] ACCEPTED data=22
+       Queue = [12 13 14 20 21 22]
+[WRITE] ACCEPTED data=23
+       Queue = [12 13 14 20 21 22 23]
+[READ ] expected=12 actual=12
+       Queue = [13 14 20 21 22 23]
+[WRITE] ACCEPTED data=24
+       Queue = [13 14 20 21 22 23 24]
+[WRITE] ACCEPTED data=25
+       Queue = [13 14 20 21 22 23 24 25]
+[READ ] expected=13 actual=13
+       Queue = [14 20 21 22 23 24 25]
+[WRITE] ACCEPTED data=26
+       Queue = [14 20 21 22 23 24 25 26]
+[READ ] expected=14 actual=14
+       Queue = [20 21 22 23 24 25 26]
+[WRITE] ACCEPTED data=27
+       Queue = [20 21 22 23 24 25 26 27]
+[WRITE] ACCEPTED data=28
+       Queue = [20 21 22 23 24 25 26 27 28]
+[READ ] expected=20 actual=20
+       Queue = [21 22 23 24 25 26 27 28]
+[WRITE] ACCEPTED data=29
+       Queue = [21 22 23 24 25 26 27 28 29]
+[WRITE] ACCEPTED data=2a
+       Queue = [21 22 23 24 25 26 27 28 29 2a]
+[READ ] expected=21 actual=21
+       Queue = [22 23 24 25 26 27 28 29 2a]
+[WRITE] ACCEPTED data=2b
+       Queue = [22 23 24 25 26 27 28 29 2a 2b]
+[READ ] expected=22 actual=22
+       Queue = [23 24 25 26 27 28 29 2a 2b]
+[WRITE] ACCEPTED data=2c
+       Queue = [23 24 25 26 27 28 29 2a 2b 2c]
+[WRITE] ACCEPTED data=2d
+       Queue = [23 24 25 26 27 28 29 2a 2b 2c 2d]
+[READ ] expected=23 actual=23
+       Queue = [24 25 26 27 28 29 2a 2b 2c 2d]
+[WRITE] ACCEPTED data=2e
+       Queue = [24 25 26 27 28 29 2a 2b 2c 2d 2e]
+[WRITE] ACCEPTED data=2f
+       Queue = [24 25 26 27 28 29 2a 2b 2c 2d 2e 2f]
+[READ ] expected=24 actual=24
+       Queue = [25 26 27 28 29 2a 2b 2c 2d 2e 2f]
+[WRITE] ACCEPTED data=30
+       Queue = [25 26 27 28 29 2a 2b 2c 2d 2e 2f 30]
+[READ ] expected=25 actual=25
+       Queue = [26 27 28 29 2a 2b 2c 2d 2e 2f 30]
+[WRITE] ACCEPTED data=31
+       Queue = [26 27 28 29 2a 2b 2c 2d 2e 2f 30 31]
+[WRITE] ACCEPTED data=32
+       Queue = [26 27 28 29 2a 2b 2c 2d 2e 2f 30 31 32]
+[READ ] expected=26 actual=26
+       Queue = [27 28 29 2a 2b 2c 2d 2e 2f 30 31 32]
+[WRITE] ACCEPTED data=33
+       Queue = [27 28 29 2a 2b 2c 2d 2e 2f 30 31 32 33]
+[WRITE] ACCEPTED data=34
+       Queue = [27 28 29 2a 2b 2c 2d 2e 2f 30 31 32 33 34]
+[READ ] expected=27 actual=27
+       Queue = [28 29 2a 2b 2c 2d 2e 2f 30 31 32 33 34]
+[WRITE] ACCEPTED data=35
+       Queue = [28 29 2a 2b 2c 2d 2e 2f 30 31 32 33 34 35]
+[WRITE] ACCEPTED data=36
+       Queue = [28 29 2a 2b 2c 2d 2e 2f 30 31 32 33 34 35 36]
+[READ ] expected=28 actual=28
+       Queue = [29 2a 2b 2c 2d 2e 2f 30 31 32 33 34 35 36]
+[WRITE] ACCEPTED data=37
+       Queue = [29 2a 2b 2c 2d 2e 2f 30 31 32 33 34 35 36 37]
+[READ ] expected=29 actual=29
+       Queue = [2a 2b 2c 2d 2e 2f 30 31 32 33 34 35 36 37]
+[WRITE] ACCEPTED data=38
+       Queue = [2a 2b 2c 2d 2e 2f 30 31 32 33 34 35 36 37 38]
+[READ ] expected=2a actual=2a
+       Queue = [2b 2c 2d 2e 2f 30 31 32 33 34 35 36 37 38]
+[READ ] expected=2b actual=2b
+       Queue = [2c 2d 2e 2f 30 31 32 33 34 35 36 37 38]
+[READ ] expected=2c actual=2c
+       Queue = [2d 2e 2f 30 31 32 33 34 35 36 37 38]
+[READ ] expected=2d actual=2d
+       Queue = [2e 2f 30 31 32 33 34 35 36 37 38]
+[READ ] expected=2e actual=2e
+       Queue = [2f 30 31 32 33 34 35 36 37 38]
+[READ ] expected=2f actual=2f
+       Queue = [30 31 32 33 34 35 36 37 38]
+[READ ] expected=30 actual=30
+       Queue = [31 32 33 34 35 36 37 38]
+[READ ] expected=31 actual=31
+       Queue = [32 33 34 35 36 37 38]
+[READ ] expected=32 actual=32
+       Queue = [33 34 35 36 37 38]
+[READ ] expected=33 actual=33
+       Queue = [34 35 36 37 38]
+[READ ] expected=34 actual=34
+       Queue = [35 36 37 38]
+[READ ] expected=35 actual=35
+       Queue = [36 37 38]
+[READ ] expected=36 actual=36
+       Queue = [37 38]
+[READ ] expected=37 actual=37
+       Queue = [38]
+[READ ] expected=38 actual=38
+       Queue = [EMPTY]
+PASS
+
+TEST 8 : RANDOM ASYNCHRONOUS TRAFFIC
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=35
+       Queue = [35]
+[READ ] REJECTED (EMPTY)
+[WRITE] ACCEPTED data=0b
+       Queue = [35 0b]
+[WRITE] ACCEPTED data=18
+       Queue = [35 0b 18]
+[READ ] expected=35 actual=35
+       Queue = [0b 18]
+[WRITE] ACCEPTED data=eb
+       Queue = [0b 18 eb]
+[WRITE] ACCEPTED data=2a
+       Queue = [0b 18 eb 2a]
+[WRITE] ACCEPTED data=0e
+       Queue = [0b 18 eb 2a 0e]
+[READ ] expected=0b actual=0b
+       Queue = [18 eb 2a 0e]
+[WRITE] ACCEPTED data=25
+       Queue = [18 eb 2a 0e 25]
+[READ ] expected=18 actual=18
+       Queue = [eb 2a 0e 25]
+[WRITE] ACCEPTED data=52
+       Queue = [eb 2a 0e 25 52]
+[READ ] expected=eb actual=eb
+       Queue = [2a 0e 25 52]
+[WRITE] ACCEPTED data=7f
+       Queue = [2a 0e 25 52 7f]
+[WRITE] ACCEPTED data=b2
+       Queue = [2a 0e 25 52 7f b2]
+[READ ] expected=2a actual=2a
+       Queue = [0e 25 52 7f b2]
+[READ ] expected=0e actual=0e
+       Queue = [25 52 7f b2]
+[WRITE] ACCEPTED data=40
+       Queue = [25 52 7f b2 40]
+[WRITE] ACCEPTED data=f6
+       Queue = [25 52 7f b2 40 f6]
+[WRITE] ACCEPTED data=15
+       Queue = [25 52 7f b2 40 f6 15]
+[READ ] expected=25 actual=25
+       Queue = [52 7f b2 40 f6 15]
+[READ ] expected=52 actual=52
+       Queue = [7f b2 40 f6 15]
+[READ ] expected=7f actual=7f
+       Queue = [b2 40 f6 15]
+[READ ] expected=b2 actual=b2
+       Queue = [40 f6 15]
+[READ ] expected=40 actual=40
+       Queue = [f6 15]
+[READ ] expected=f6 actual=f6
+       Queue = [15]
+[READ ] expected=15 actual=15
+       Queue = [EMPTY]
+PASS
+
+TEST 9 : RESET DURING ACTIVE TRAFFIC
+[WRITE] ACCEPTED data=a1
+       Queue = [a1]
+[WRITE] ACCEPTED data=a2
+       Queue = [a1 a2]
+[WRITE] ACCEPTED data=a3
+       Queue = [a1 a2 a3]
+Reset correctly flushed FIFO. PASS
+
+================================================
+VERIFICATION SUMMARY
+================================================
+Tests              : 9
+Accepted writes    : 125
+Accepted reads     : 106
+Rejected writes    : 10
+Rejected reads     : 25
+Remaining entries  : 0
+Errors             : 0
+ALL TESTS PASSED
