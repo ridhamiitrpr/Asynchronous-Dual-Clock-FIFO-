@@ -298,7 +298,5 @@ The repository contains both the **RTL implementation** and the **verification e
 ## Author
 
 **Ridham Garg**
-
-2023epb1271@iitrpr.ac.in
-
+2024epb1276@iitrpr.ac.in
 Indian Institute of Technology Ropar
